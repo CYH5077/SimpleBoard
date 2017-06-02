@@ -11,7 +11,10 @@ At the end of the build, a file called test will be created.<br>
 : <b><font color="red">./test -s</font><br></b>
 2-3. To connect to a remote server, use the -c option <br>
 : <b><font color="red">./test -c [target ip]</font><br></b>
-  
+
+
+
+If it does not work, restart the server and client.
 <center><b><h1>GUI Mode (only Windows)</h1></b></center>
 <img src="https://github.com/Choi-Young-Hoon/SimpleBoard/blob/master/DashBoard.gif"/>
 <br><br>
