@@ -134,14 +134,14 @@ int main(int argc, char *argv[])
 	{
 		if(strcmp(argv[1], "-c") == 0){
 			if(client_start(argv[2]) == -1){
-				perror("server_start() failed");
+				perror("client_start() failed");
 				return -1;
 			}
 
 		}
 		else if(strcmp(argv[1], "-s") == 0){
 			if(server_start() == -1){
-				perror("client_start() failed");
+				perror("server_start() failed");
 				return -1;
 			}
 		}
