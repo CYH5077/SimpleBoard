@@ -13,7 +13,7 @@ At the end of the build, a file called test will be created.<br>
 : <b><font color="red">./test -c [target ip]</font><br></b>
   
 <center><b><h1>GUI Mode (only Windows)</h1></b></center>
-<img src="https://github.com/Choi-Young-Hoon/SimpleBoard/blob/master/DashBoard.gif.gif"/>
+<img src="https://github.com/Choi-Young-Hoon/SimpleBoard/blob/master/DashBoard.gif"/>
 <br><br>
 <center><b><h1>CUI Mode (only Linux)</h1></b></center>
 <img src="https://github.com/Choi-Young-Hoon/SimpleBoard/blob/master/DashBoardCUI.gif"/>
