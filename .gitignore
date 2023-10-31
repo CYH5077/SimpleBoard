@@ -1,5 +1,39 @@
-# Created by https://www.toptal.com/developers/gitignore/api/cmake,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=cmake,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/cmake,visualstudiocode,c++
+# Edit at https://www.toptal.com/developers/gitignore?templates=cmake,visualstudiocode,c++
+
+### C++ ###
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
 
 ### CMake ###
 CMakeLists.txt.user
@@ -37,4 +71,4 @@ _deps
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/cmake,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/cmake,visualstudiocode,c++
