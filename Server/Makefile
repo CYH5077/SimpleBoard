@@ -1,7 +1,7 @@
-TARGET = test
+TARGET = test.out
 OBJECT = main.o print.o resource/cpu.o resource/memory.o resource/network.o
 CC = gcc
-CFLAGS = -W -Wall
+CFLAGS = -W -Wall -g -ggdb
 FLAGS = -pthread
 
 all : $(TARGET)

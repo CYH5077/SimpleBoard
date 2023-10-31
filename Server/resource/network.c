@@ -4,10 +4,10 @@
 #include "./info.h"
 #include <string.h>
 
-#define NET_BYTE_SEND "/sys/class/net/enp2s0/statistics/tx_bytes"
-#define NET_BYTE_RECV "/sys/class/net/enp2s0/statistics/rx_bytes"
-#define NET_SOCK_SEND "/sys/class/net/enp2s0/statistics/tx_packets"
-#define NET_SOCK_RECV "/sys/class/net/enp2s0/statistics/rx_packets"
+#define NET_BYTE_SEND "/sys/class/net/enp0s3/statistics/tx_bytes"
+#define NET_BYTE_RECV "/sys/class/net/enp0s3/statistics/rx_bytes"
+#define NET_SOCK_SEND "/sys/class/net/enp0s3/statistics/tx_packets"
+#define NET_SOCK_RECV "/sys/class/net/enp0s3/statistics/rx_packets"
 
 static int get_file(char * file, int * result)
 {
