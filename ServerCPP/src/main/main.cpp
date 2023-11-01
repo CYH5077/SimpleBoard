@@ -1,19 +1,22 @@
 #include <iostream>
 
 #include "util/Result.hpp"
-#include "resource/CPUResource.hpp"
+#include "resource/MemoryUsageInfo.hpp"
+#include "resource/MemoryResource.hpp"
 
 int main(void) {
-    CPUInterfaceInfo interfaceInfo;
-    CPUResource cpuResource;
+    MemoryUsageInfo memoryUsageInfo;
+    MemoryResource memoryResource;
 
     Result result;
-    if (!cpuResource.readCPUInterfaceInfo(&interfaceInfo, &result)) {
-        std::cout << result.getErrorMessage() << std::endl;
+    if (!memoryResource.readMemoryUsageInfo(&memoryUsageInfo, &result)) {
+        std::cout << "failed - " << result.getErrorMessage() << std::endl;
     }
-    std::cout << interfaceInfo.getVendor() << std::endl;
-    std::cout << interfaceInfo.getModel() << std::endl;
-    std::cout << interfaceInfo.getCoreCount() << std::endl;
-    
+
+    std::cout << memoryUsageInfo.getTotalMemory() << std::endl;
+    std::cout << memoryUsageInfo.getUsageMemory() << std::endl;
+    std::cout << memoryUsageInfo.getTotalVirtualMemory() << std::endl;
+    std::cout << memoryUsageInfo.getUsageVirtualMemory() << std::endl;
+
     return 0;
 }

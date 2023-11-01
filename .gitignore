@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/cmake,visualstudiocode,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=cmake,visualstudiocode,c++
 
+# 실행파일
+resource_server
+
 ### C++ ###
 # Prerequisites
 *.d
