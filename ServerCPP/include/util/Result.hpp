@@ -10,6 +10,7 @@ public:
 public:
     bool success();
     bool failed(int errorCode, std::string&& errorMessage);
+    void clear();
 
     bool        isSuccess();
     int         getErrorCode();

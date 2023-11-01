@@ -1,8 +1,7 @@
 #include "util/Result.hpp"
 
 Result::Result() {
-    this->result = true;
-    this->errorCode = 0;
+    this->clear();
 }
 
 Result::~Result() {
@@ -10,6 +9,8 @@ Result::~Result() {
 }
 
 bool Result::success() {
+    this->clear();
+
     this->result = true;
     
     return true;
@@ -21,6 +22,12 @@ bool Result::failed(int errorCode, std::string&& errorMessage) {
     this->errorMessage = errorMessage;
 
     return false;
+}
+
+void Result::clear() {
+    this->result = true;
+    this->errorCode = 0;
+    this->errorMessage = "";
 }
 
 bool Result::isSuccess() {
