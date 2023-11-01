@@ -3,7 +3,7 @@
 
 # 실행파일
 resource_server
-
+ServerCPP/src/main/resource_server
 ### C++ ###
 # Prerequisites
 *.d
