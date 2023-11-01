@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "util/Result.hpp"
+
 #include "resource/NetworkResource.hpp"
 #include "resource/NetworkUsageInfo.hpp"
 #include "resource/MemoryResource.hpp"
@@ -8,6 +9,9 @@
 #include "resource/CPUInterfaceInfo.hpp"
 #include "resource/CPUResource.hpp"
 #include "resource/CPUUsageInfo.hpp"
+#include "resource/SystemResource.hpp"
+#include "resource/SystemUsageInfo.hpp"
+#include "resource/SystemInterfaceInfo.hpp"
 
 static void testCPU() {
     CPUInterfaceInfo interfaceInfo;
@@ -68,10 +72,39 @@ static void testNetwork() {
     std::cout << usageInfo.getRecvPacket() << " (1/s)" << std::endl << std::endl;
 }
 
-int main(void) {
-    testCPU();
-    testMemory();
-    testNetwork();
+static void testSystemResource() {
+    SystemResource resource;
 
+    Result result;
+    SystemInterfaceInfo interfaceInfo;
+    if (!resource.readInterfaceInfo(&interfaceInfo, &result)) {
+        std::cout << result.getErrorMessage() << std::endl;
+    }
+    CPUInterfaceInfo cpuInterfaceInfo = interfaceInfo.getCPUInfo();
+    std::cout << "System Interface Info ================================" << std::endl;
+    std::cout << "Model: " << cpuInterfaceInfo.getModel() << std::endl;
+    std::cout << "Vendor: " << cpuInterfaceInfo.getVendor() << std::endl;
+    std::cout << "Cores : " << cpuInterfaceInfo.getCoreCount() << std::endl << std::endl;
+
+    ResultList resultList;
+    SystemUsageInfo usageInfo;
+    std::string networkInterfaceName = "enp0s3";
+    if (!resource.readUsageInfo(networkInterfaceName, &usageInfo, &resultList)) {
+        std::cout << "readUsageInfo Error" << std::endl;
+    }
+    CPUUsageInfo cpuUsageInfo = usageInfo.getCPUInfo();
+    MemoryUsageInfo memoryUsageInfo = usageInfo.getMemoryInfo();
+    NetworkUsageInfo networkUsageInfo = usageInfo.getNetworkInfo();
+    std::cout << "System Usage Info ======================================" << std::endl;
+    std::cout << "CPU Usage: " << cpuUsageInfo.getUsage() << "%" << std::endl;
+    std::cout << "Memory Info: " << (int)memoryUsageInfo.getTotalMemoryToKbytes() << std::endl;
+    std::cout << "Network Info: " << networkUsageInfo.getTotalSize() << std::endl;
+}
+
+int main(void) {
+//    testCPU();
+//    testMemory();
+//    testNetwork();
+    testSystemResource();
     return 0;
 }
