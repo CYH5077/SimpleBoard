@@ -1,4 +1,5 @@
 #include "resource/CPUResource.hpp"
+#include "util/StringUtil.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -8,8 +9,15 @@
 #include <thread>
 #include <chrono>
 
-const std::string CPUResource::STAT_FILE_PATH = "/proc/stat";
+
+// linux cpu 정보가 들어있는 파일 경로
+const std::string CPUResource::STAT_FILE_PATH    = "/proc/stat";
 const std::string CPUResource::CPUINFO_FILE_PATH = "/proc/cpuinfo";
+
+// cpuinfo 파일에서 가져올 데이터 라벨
+const std::string CPUResource::CPUINFO_VENDOR_ID  = "vendor_id";
+const std::string CPUResource::CPUINFO_MODEL_NAME = "model name";
+const std::string CPUResource::CPUINFO_CORE_COUNT = "cpu cores";
 
 CPUResource::CPUResource() {
 
@@ -58,14 +66,27 @@ bool CPUResource::readStatFile(CPUUsageInfo* cpuUsageInfo, Result* result) {
         return result->failed(-1, this->STAT_FILE_PATH + " 파일을 열지 못했습니다.");
     }
 
-    std::string readData;
-    std::getline(inputFileStream, readData);
-    this->parseStat(readData, cpuUsageInfo);
+    std::string readLine;
+    std::getline(inputFileStream, readLine);
+    this->parseStat(readLine, cpuUsageInfo);
     
     return result->success();
 }
 
 bool CPUResource::readCPUInfoFile(CPUInterfaceInfo* cpuInterfaceInfo, Result* result) {
+    std::ifstream inputFileStream(this->CPUINFO_FILE_PATH);
+    if (!inputFileStream.is_open()) {
+        return result->failed(-1, this->CPUINFO_FILE_PATH + " 파일을 열지 못했습니다");
+    }
+
+    std::string readLine;
+    std::vector<std::string> lines;
+    while(std::getline(inputFileStream, readLine)) {
+        if (readLine.length() == 0) {
+            break;
+        }
+        this->parseCPUInfo(readLine, cpuInterfaceInfo);
+    }
 
     return result->success();
 }
@@ -88,7 +109,19 @@ void CPUResource::parseStat(std::string& stat, CPUUsageInfo* cpuUsageInfo) {
 }
 
 void CPUResource::parseCPUInfo(std::string& cpuInfo, CPUInterfaceInfo* cpuInterfaceInfo) {
+    std::string title = cpuInfo.substr(0, cpuInfo.find(":"));
+    std::string value = cpuInfo.substr(cpuInfo.find(":") + 1, cpuInfo.length());
 
+    title = StringUtil::removeLastTab(title);
+    value = StringUtil::removeFirstSpace(value);
+
+    if (title == this->CPUINFO_VENDOR_ID) {
+        cpuInterfaceInfo->setVendor(value);
+    } else if (title == this->CPUINFO_MODEL_NAME) {
+        cpuInterfaceInfo->setModel(value);
+    } else if (title == this->CPUINFO_CORE_COUNT) {
+        cpuInterfaceInfo->setCoreCount(std::stoi(value));
+    }
 }
 
 int CPUResource::calcCPUUsage(CPUUsageInfo& beforeUsage, CPUUsageInfo& afterUsage) {

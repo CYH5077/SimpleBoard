@@ -16,7 +16,7 @@ void CPUInterfaceInfo::setVendor(std::string& vendor) {
     this->vendor = vendor;
 }
 
-void CPUInterfaceInfo::setCoreCount(int count) {
+void CPUInterfaceInfo::setCoreCount(int coreCount) {
     this->coreCount = coreCount;
 }
 

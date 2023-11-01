@@ -4,13 +4,16 @@
 #include "resource/CPUResource.hpp"
 
 int main(void) {
-    CPUUsageInfo usageInfo;
+    CPUInterfaceInfo interfaceInfo;
     CPUResource cpuResource;
 
     Result result;
-    if (!cpuResource.readCPUUsageInfo(&usageInfo, &result)) {
+    if (!cpuResource.readCPUInterfaceInfo(&interfaceInfo, &result)) {
         std::cout << result.getErrorMessage() << std::endl;
     }
+    std::cout << interfaceInfo.getVendor() << std::endl;
+    std::cout << interfaceInfo.getModel() << std::endl;
+    std::cout << interfaceInfo.getCoreCount() << std::endl;
     
     return 0;
 }

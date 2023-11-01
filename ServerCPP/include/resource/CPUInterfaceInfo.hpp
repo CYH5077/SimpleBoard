@@ -14,7 +14,7 @@ public:
 public:
     void setModel(std::string& model);
     void setVendor(std::string& vendor);
-    void setCoreCount(int count);
+    void setCoreCount(int coreCount);
 
     std::string getModel();
     std::string getVendor();
