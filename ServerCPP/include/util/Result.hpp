@@ -12,6 +12,11 @@ public:
     bool failed(int errorCode, std::string&& errorMessage);
     void clear();
 
+public: 
+    // setter
+    void setResult(Result& result);
+
+    // getter
     bool        isSuccess();
     int         getErrorCode();
     std::string getErrorMessage();

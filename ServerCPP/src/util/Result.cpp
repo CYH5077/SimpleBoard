@@ -30,6 +30,12 @@ void Result::clear() {
     this->errorMessage = "";
 }
 
+void Result::setResult(Result& result) {
+    this->result = result.result;
+    this->errorCode = result.errorCode;
+    this->errorMessage = result.errorMessage;
+}
+
 bool Result::isSuccess() {
     return this->result;
 }

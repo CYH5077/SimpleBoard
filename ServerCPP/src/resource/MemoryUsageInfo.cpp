@@ -27,18 +27,18 @@ void MemoryUsageInfo::setUsageVirtualMemory(double usageVirtualMemory) {
     this->usageVirtualMemory = usageVirtualMemory;
 }
 
-double MemoryUsageInfo::getTotalMemory() {
-    return this->totalMemory;
+double MemoryUsageInfo::getTotalMemoryToKbytes() {
+    return this->totalMemory / 1024;
 }
 
-double MemoryUsageInfo::getUsageMemory() {
-    return this->usageMemory;
+double MemoryUsageInfo::getUsageMemoryToKbytes() {
+    return this->usageMemory / 1024;
 }
 
-double MemoryUsageInfo::getTotalVirtualMemory() {
-    return this->totalVirtualMemory;
+double MemoryUsageInfo::getTotalVirtualMemoryToKbytes() {
+    return this->totalVirtualMemory / 1024;
 }
 
-double MemoryUsageInfo::getUsageVirtualMemory() {
-    return this->usageVirtualMemory;
+double MemoryUsageInfo::getUsageVirtualMemoryToKbytes() {
+    return this->usageVirtualMemory / 1024;
 }

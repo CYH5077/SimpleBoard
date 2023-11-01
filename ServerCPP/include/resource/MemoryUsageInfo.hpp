@@ -11,10 +11,10 @@ public:
     void setTotalVirtualMemory(double totalVirtualMemory);
     void setUsageVirtualMemory(double UsageVirtualMemory);
 
-    double getTotalMemory();
-    double getUsageMemory();
-    double getTotalVirtualMemory();
-    double getUsageVirtualMemory();
+    double getTotalMemoryToKbytes();
+    double getUsageMemoryToKbytes();
+    double getTotalVirtualMemoryToKbytes();
+    double getUsageVirtualMemoryToKbytes();
     
 private:
     // Memory

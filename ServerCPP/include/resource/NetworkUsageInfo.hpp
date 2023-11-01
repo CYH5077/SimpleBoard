@@ -7,28 +7,28 @@ public:
 
 public:
     // Setter
-    void setSendSizePerSecond(int sendSizePerSecond);
-    void setRecvSizePerSecond(int recvSizePerSecond);
+    void setSendSize(int sendSize);
+    void setRecvSize(int recvSize);
     
-    void setSendPacketPerSecond(int sendPacketPerSecond);
-    void setRecvPacketPerSecond(int recvPacketPerSecond);
+    void setSendPacket(int sendPacket);
+    void setRecvPacket(int recvPacket);
 
 
     // Getter
-    int getSendSizePerSecond(); // 초당 보낸 데이터 크기
-    int getRecvSizePerSecond(); // 초당 받은 데이터 크기
-    int getTotalSizePerSecond(); // 초당 보내고 받은 데이터의 크기
+    int getSendSize(); // 초당 보낸 데이터 크기
+    int getRecvSize(); // 초당 받은 데이터 크기
+    int getTotalSize(); // 초당 보내고 받은 데이터의 크기
     
-    int getSendPacketPerSecond(); // 초당 보낸 패킷의 개수
-    int getRecvPacketPerSecond(); // 초당 받은 패킷의 개수
-    int getTotalPacketPerSecond(); // 초당 보내가 받은 패킷의 개수
+    int getSendPacket(); // 초당 보낸 패킷의 개수
+    int getRecvPacket(); // 초당 받은 패킷의 개수
+    int getTotalPacket(); // 초당 보내가 받은 패킷의 개수
 
 private:
     // 초당 보내고 받은 데이터의 크기
-    int sendSizePerSecond;
-    int recvSizePerSecond;
+    int sendSize;
+    int recvSize;
 
     // 초당 보내고 받은 패킷
-    int sendPacketPerSecond;
-    int recvPacketPerSecond;
+    int sendPacket;
+    int recvPacket;
 };

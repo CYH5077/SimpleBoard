@@ -33,17 +33,16 @@ bool CPUResource::readCPUUsageInfo(CPUUsageInfo* cpuUsageInfo, Result* result) {
         return false;
     }
     
-    Result readStatFileResult;
     CPUUsageInfo beforeUsage;
     CPUUsageInfo afterUsage;
-    if (!this->readStatFile(&beforeUsage, &readStatFileResult)) {
-        return result->failed(readStatFileResult.getErrorCode(), readStatFileResult.getErrorMessage());
+    if (!this->readStatFile(&beforeUsage, result)) {
+        return result->isSuccess();
     }
 
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
-    if (!this->readStatFile(&afterUsage, &readStatFileResult)) {
-        return result->failed(readStatFileResult.getErrorCode(), readStatFileResult.getErrorMessage());    
+    if (!this->readStatFile(&afterUsage, result)) {
+        return result->isSuccess();    
     }
 
     int cpuUsage = this->calcCPUUsage(beforeUsage, afterUsage);

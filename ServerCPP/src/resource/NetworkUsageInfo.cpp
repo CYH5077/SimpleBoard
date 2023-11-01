@@ -1,49 +1,52 @@
 #include "resource/NetworkUsageInfo.hpp"
 
 NetworkUsageInfo::NetworkUsageInfo() {
-
+    this->sendSize = 0;
+    this->recvSize = 0;
+    this->sendPacket = 0;
+    this->recvPacket = 0;
 }
 
 NetworkUsageInfo::~NetworkUsageInfo() {
 
 }
 
-void NetworkUsageInfo::setSendSizePerSecond(int sendSizePerSecond) {
-    this->sendSizePerSecond = sendSizePerSecond;
+void NetworkUsageInfo::setSendSize(int sendSize) {
+    this->sendSize = sendSize;
 }
 
-void NetworkUsageInfo::setRecvSizePerSecond(int recvSizePerSecond) {
-    this->recvSizePerSecond = recvSizePerSecond;
+void NetworkUsageInfo::setRecvSize(int recvSize) {
+    this->recvSize = recvSize;
 }
 
-void NetworkUsageInfo::setSendPacketPerSecond(int sendPacketPerSecond) {
-    this->sendPacketPerSecond = sendPacketPerSecond;
+void NetworkUsageInfo::setSendPacket(int sendPacket) {
+    this->sendPacket = sendPacket;
 }
 
-void NetworkUsageInfo::setRecvPacketPerSecond(int recvPacketPerSecond) {
-    this->recvPacketPerSecond = recvPacketPerSecond;
+void NetworkUsageInfo::setRecvPacket(int recvPacket) {
+    this->recvPacket = recvPacket;
 }
 
-int NetworkUsageInfo::getSendSizePerSecond() {
-    return this->sendSizePerSecond;
+int NetworkUsageInfo::getSendSize() {
+    return this->sendSize;
 }
 
-int NetworkUsageInfo::getRecvSizePerSecond() {
-    return this->recvSizePerSecond;
+int NetworkUsageInfo::getRecvSize() {
+    return this->recvSize;
 }
 
-int NetworkUsageInfo::getTotalSizePerSecond() {
-    return this->sendSizePerSecond + this->recvSizePerSecond;
+int NetworkUsageInfo::getTotalSize() {
+    return this->sendSize + this->recvSize;
 }
 
-int NetworkUsageInfo::getSendPacketPerSecond() {
-    return this->sendPacketPerSecond;
+int NetworkUsageInfo::getSendPacket() {
+    return this->sendPacket;
 }
 
-int NetworkUsageInfo::getRecvPacketPerSecond() {
-    return this->recvPacketPerSecond;
+int NetworkUsageInfo::getRecvPacket() {
+    return this->recvPacket;
 }
 
-int NetworkUsageInfo::getTotalPacketPerSecond() {
-    return this->sendPacketPerSecond + this->recvPacketPerSecond;
+int NetworkUsageInfo::getTotalPacket() {
+    return this->sendPacket + this->recvPacket;
 }
