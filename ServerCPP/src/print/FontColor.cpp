@@ -12,7 +12,7 @@ FontColor::FontColor() {
 }
 
 FontColor::FontColor(FONT_COLOR fontColor) {
-    this->setFontColor(fontColor);
+    this->setColor(fontColor);
 }
 
 FontColor::~FontColor() {
@@ -27,7 +27,7 @@ std::string FontColor::end() const {
     return this->DEFAULT_FONT_COLOR;
 }
 
-void FontColor::setFontColor(FONT_COLOR fontColor) {
+void FontColor::setColor(FONT_COLOR fontColor) {
     switch (fontColor) {
     case FONT_COLOR::CPU_FONT_COLOR:
         this->fontColor = this->CPU_FONT_COLOR;     break;

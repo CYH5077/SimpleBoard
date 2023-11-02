@@ -24,8 +24,8 @@ public:
     static const std::string MEMORY_FONT_COLOR;
     static const std::string NETWORK_FONT_COLOR;
 
-private:
-    void setFontColor(FONT_COLOR fontColor);
+public:
+    void setColor(FONT_COLOR fontColor);
     
 private:
     std::string fontColor;

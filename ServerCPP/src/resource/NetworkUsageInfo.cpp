@@ -5,6 +5,11 @@ NetworkUsageInfo::NetworkUsageInfo() {
     this->recvSize = 0;
     this->sendPacket = 0;
     this->recvPacket = 0;
+
+    this->maximumSendSize = 0;
+    this->maximumRecvSize = 0;
+    this->maximumSendPacket = 0;
+    this->maximumRecvPacket = 0;
 }
 
 NetworkUsageInfo::~NetworkUsageInfo() {
@@ -25,6 +30,22 @@ void NetworkUsageInfo::setSendPacket(int sendPacket) {
 
 void NetworkUsageInfo::setRecvPacket(int recvPacket) {
     this->recvPacket = recvPacket;
+}
+
+void NetworkUsageInfo::setMaximumSendSize(int sendSize) {
+    this->maximumSendSize = sendSize;
+}
+
+void NetworkUsageInfo::setMaximumRecvSize(int recvSize) {
+    this->maximumRecvSize = recvSize;
+}
+
+void NetworkUsageInfo::setMaximumSendPacket(int sendPacket) {
+    this->maximumSendPacket = sendPacket;
+}
+
+void NetworkUsageInfo::setMaximumRecvPacket(int recvPacket) {
+    this->maximumRecvPacket = recvPacket;
 }
 
 int NetworkUsageInfo::getSendSize() {
@@ -49,4 +70,28 @@ int NetworkUsageInfo::getRecvPacket() {
 
 int NetworkUsageInfo::getTotalPacket() {
     return this->sendPacket + this->recvPacket;
+}
+
+int NetworkUsageInfo::getMaximumSendSize() {
+    return this->maximumSendSize;
+}
+
+int NetworkUsageInfo::getMaximumRecvSize() {
+    return this->maximumRecvSize;
+}
+
+int NetworkUsageInfo::getMaximumTotalSize() {
+    return this->maximumSendSize + this->maximumRecvSize;
+}
+
+int NetworkUsageInfo::getMaximumSendPacket() {
+    return this->maximumSendPacket;
+}
+
+int NetworkUsageInfo::getMaximumRecvPacket() {
+    return this->maximumRecvPacket;
+}
+
+int NetworkUsageInfo::getMaximumTotalPacket() {
+    return this->maximumSendPacket + this->maximumRecvPacket;
 }

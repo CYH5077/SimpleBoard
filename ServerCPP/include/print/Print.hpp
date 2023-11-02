@@ -8,10 +8,14 @@ class Print {
 public:
     explicit Print();
     explicit Print(FontColor& fontColor);
+    explicit Print(FONT_COLOR fontColor);
     virtual ~Print();
 
 public: // interface
     virtual std::string text() const = 0;
+
+public:
+    void setFontColor(FontColor&& fontColor);
 
 public:
     friend std::ostream& operator<<(std::ostream& os, const Print& print) {
