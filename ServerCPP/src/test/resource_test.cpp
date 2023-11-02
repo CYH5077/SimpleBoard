@@ -97,8 +97,16 @@ static void testSystemResource() {
     NetworkUsageInfo networkUsageInfo = usageInfo.getNetworkInfo();
     std::cout << "System Usage Info ======================================" << std::endl;
     std::cout << "CPU Usage: " << cpuUsageInfo.getUsage() << "%" << std::endl;
-    std::cout << "Memory Info: " << (int)memoryUsageInfo.getTotalMemoryToKbytes() << std::endl;
-    std::cout << "Network Info: " << networkUsageInfo.getTotalSize() << std::endl;
+    std::cout << "Total Memory: " << (int)memoryUsageInfo.getTotalMemoryToKbytes() << std::endl;
+    std::cout << "Usage Memory: " << (int)memoryUsageInfo.getUsageMemoryToKbytes() << std::endl;
+    std::cout << "Total Virtual Memory: " << (int)memoryUsageInfo.getTotalVirtualMemoryToKbytes() << std::endl;
+    std::cout << "Usage Virtual Memory: " << (int)memoryUsageInfo.getUsageVirtualMemoryToKbytes() << std::endl;
+    std::cout << "Network Total Size: " << networkUsageInfo.getTotalSize() << std::endl;
+    std::cout << "Network Send Size: " << networkUsageInfo.getSendSize() << std::endl;
+    std::cout << "Network Recv Size: " << networkUsageInfo.getRecvSize() << std::endl;
+    std::cout << "Network Total Packet: " << networkUsageInfo.getTotalPacket() << std::endl;
+    std::cout << "Network Send Packet: " << networkUsageInfo.getSendPacket() << std::endl;
+    std::cout << "Network Recv Packet: " << networkUsageInfo.getRecvPacket() << std::endl;
 }
 
 int main(void) {

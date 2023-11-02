@@ -2,8 +2,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=cmake,visualstudiocode,c++
 
 # 실행파일
-resource_server
-ServerCPP/src/main/resource_server
+resource_test
+print_test
 ### C++ ###
 # Prerequisites
 *.d

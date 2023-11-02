@@ -11,5 +11,4 @@ add_subdirectory(src)
 
 target_compile_options(util PRIVATE ${DEBUG_COMPILE_OPTIONS})
 target_compile_options(resource_library PRIVATE ${DEBUG_COMPILE_OPTIONS})
-target_compile_options(resource_server PRIVATE ${DEBUG_COMPILE_OPTIONS})
-
+target_compile_options(resource_print_library PRIVATE ${DEBUG_COMPILE_OPTIONS})

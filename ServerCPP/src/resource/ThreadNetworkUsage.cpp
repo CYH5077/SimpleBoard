@@ -13,6 +13,7 @@ void ThreadNetworkUsage::run(NetworkUsageInfo* usageInfo, Result* result) {
     NetworkResource resource;
     if (!resource.readNetworkUsageInfoPerSecond(this->networkInterfaceName, usageInfo, result)) {
         // error
+        return;
     }
 
     result->success();
