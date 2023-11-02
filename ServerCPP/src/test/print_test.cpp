@@ -4,6 +4,7 @@
 
 #include "print/ProgressBar.hpp"
 #include "print/FontColor.hpp"
+#include "print/TitleBar.hpp"
 #include "print/PrintCPUInterfaceInfo.hpp"
 #include "print/PrintMemoryUsageInfo.hpp"
 #include "print/PrintNetworkUsageInfo.hpp"
@@ -20,6 +21,11 @@ void testProgressBar() {
     std::cout << ProgressBar("test 100%", 100.0, 100.0) << std::endl;
 }
 
+void testTitleBar() {
+    std::cout << TitleBar("Test main titlebar", TITLEBAR_TYPE::MAIN) << std::endl;
+    std::cout << TitleBar("Test sub titlebar", TITLEBAR_TYPE::SUB) << std::endl;
+}
+
 void testPrintMemoryInfo() {
     MemoryResource resource;
     MemoryUsageInfo usageInfo;
@@ -30,6 +36,7 @@ void testPrintMemoryInfo() {
         return;
     }
 
+    std::cout << TitleBar("Memory", TITLEBAR_TYPE::SUB) << std::endl;
     std::cout << PrintMemoryUsageInfo(usageInfo) << std::endl;
     std::cout << ProgressBar("사용량", usageInfo.getUsageMemoryToKbytes(), usageInfo.getTotalMemoryToKbytes(), FontColor(FONT_COLOR::MEMORY_FONT_COLOR)) << "\t\t"
               << ProgressBar("사용량", usageInfo.getUsageVirtualMemoryToKbytes() , usageInfo.getTotalVirtualMemoryToKbytes(), FontColor(FONT_COLOR::MEMORY_FONT_COLOR))
@@ -49,6 +56,7 @@ void testPrintNetworkInfo() {
         }
     }
 
+    std::cout << TitleBar("Network", TITLEBAR_TYPE::SUB) << std::endl;
     std::cout << PrintNetworkUsageInfo(usageInfo) << std::endl;
 }
 
@@ -68,6 +76,7 @@ void testPrintCPUInfo() {
         return;
     }
 
+    std::cout << TitleBar("CPU", TITLEBAR_TYPE::SUB) << std::endl;
     std::cout << PrintCPUInterfaceInfo(interfaceInfo) << std::endl;
     std::cout << ProgressBar("CPU 사용량", (double)usageInfo.getUsage(), 100.0, FontColor(FONT_COLOR::CPU_FONT_COLOR))
               << std::endl;
@@ -75,6 +84,9 @@ void testPrintCPUInfo() {
 
 int main(void) {
     testProgressBar();
+    testTitleBar();
+
+    std::cout << TitleBar("System Resource", TITLEBAR_TYPE::MAIN) << std::endl;
     testPrintMemoryInfo();
     testPrintNetworkInfo();
     testPrintCPUInfo();

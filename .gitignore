@@ -4,6 +4,7 @@
 # 실행파일
 resource_test
 print_test
+util_test
 build
 
 ### C++ ###

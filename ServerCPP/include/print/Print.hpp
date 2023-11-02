@@ -16,6 +16,7 @@ public: // interface
 
 public:
     void setFontColor(FontColor&& fontColor);
+    void setFontColor(FONT_COLOR fontColor);
 
 public:
     friend std::ostream& operator<<(std::ostream& os, const Print& print) {

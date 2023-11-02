@@ -9,5 +9,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 set(SOURCES Result.cpp
             ResultList.cpp
             StringUtil.cpp
-            ThreadManager.cpp)
+            ThreadManager.cpp
+            ArgvUtil.cpp
+            ArgvItem.cpp)
 add_library(${PROJECT_NAME} ${SOURCES})

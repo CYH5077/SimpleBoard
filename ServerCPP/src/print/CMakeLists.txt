@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCES Print.cpp
             ProgressBar.cpp
             FontColor.cpp
+            TitleBar.cpp
             PrintSystemResource.cpp
             PrintCPUInterfaceInfo.cpp
             PrintMemoryUsageInfo.cpp

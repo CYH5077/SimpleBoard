@@ -19,3 +19,7 @@ Print::~Print() {
 void Print::setFontColor(FontColor&& fontColor) {
     this->fontColor = fontColor;
 }
+
+void Print::setFontColor(FONT_COLOR fontColor) {
+    this->fontColor.setColor(fontColor);
+}
