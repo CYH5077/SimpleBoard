@@ -6,15 +6,15 @@ public:
     virtual ~MemoryUsageInfo();
 
 public:
-    void setTotalMemory(double totalMemory);
-    void setUsageMemory(double usageMemory);
-    void setTotalVirtualMemory(double totalVirtualMemory);
-    void setUsageVirtualMemory(double UsageVirtualMemory);
+    void setTotalMemory(const double totalMemory);
+    void setUsageMemory(const double usageMemory);
+    void setTotalVirtualMemory(const double totalVirtualMemory);
+    void setUsageVirtualMemory(const double UsageVirtualMemory);
 
-    double getTotalMemoryToKbytes();
-    double getUsageMemoryToKbytes();
-    double getTotalVirtualMemoryToKbytes();
-    double getUsageVirtualMemoryToKbytes();
+    double getTotalMemoryToKbytes() const;
+    double getUsageMemoryToKbytes() const;
+    double getTotalVirtualMemoryToKbytes() const;
+    double getUsageVirtualMemoryToKbytes() const;
     
 private:
     // Memory

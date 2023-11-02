@@ -41,7 +41,6 @@ bool NetworkResource::readNetworkUsageInfoPerSecond(std::string& networkInterfac
     }
 
     this->calcNetworkUsagePerSecond(beforeUsageInfo, afterUsageInfo, networkUsageInfo);
-    this->calcNetworkUsageMaximum(networkUsageInfo);
 
     return result->success();
 }
@@ -147,14 +146,3 @@ void NetworkResource::calcNetworkUsagePerSecond(NetworkUsageInfo& beforeUsageInf
     networkUsageInfo->setRecvPacket(recvPacket);
 }
 
-void NetworkResource::calcNetworkUsageMaximum(NetworkUsageInfo* usageInfo) {
-    int sendSize = usageInfo->getSendSize() >= usageInfo->getMaximumSendSize() ? usageInfo->getSendSize() : usageInfo->getMaximumSendSize();
-    int recvSize = usageInfo->getRecvSize() >= usageInfo->getMaximumRecvSize() ? usageInfo->getRecvSize() : usageInfo->getMaximumRecvSize();
-    int sendPacket = usageInfo->getSendPacket() >= usageInfo->getMaximumSendPacket() ? usageInfo->getSendPacket() : usageInfo->getMaximumSendPacket();
-    int recvPacket = usageInfo->getRecvPacket() >= usageInfo->getMaximumRecvPacket() ? usageInfo->getRecvPacket() : usageInfo->getMaximumRecvPacket();
-
-    usageInfo->setMaximumSendSize(sendSize);
-    usageInfo->setMaximumRecvSize(recvSize);
-    usageInfo->setMaximumSendPacket(sendPacket);
-    usageInfo->setMaximumRecvPacket(recvPacket);
-}

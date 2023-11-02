@@ -16,11 +16,15 @@ public:
 
 public:
     virtual void start() {
-        this->thread = std::make_shared<std::thread>([&](){
-            RETURN_TYPE returnValue;
-            this->run(&returnValue, &this->result);
-            this->setReturn(returnValue);
-        });
+        try{
+            this->thread = std::make_shared<std::thread>([&](){
+                RETURN_TYPE returnValue;
+                this->run(&returnValue, &this->result);
+                this->setReturn(returnValue);
+            });
+        } catch (const std::bad_alloc& e) {
+            this->result.failed(-1, e.what());
+        }
     }
 
     virtual void join() {

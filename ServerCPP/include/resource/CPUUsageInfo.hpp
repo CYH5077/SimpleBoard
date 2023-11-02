@@ -10,17 +10,17 @@ public:
     virtual ~CPUUsageInfo();
 
 public: // getter setter
-    void setUsage(int usage);
-    void setUser(int user);
-    void setNice(int nice);
-    void setSystem(int system);
-    void setIdle(int idle);
+    void setUsage(const int usage);
+    void setUser(const int user);
+    void setNice(const int nice);
+    void setSystem(const int system);
+    void setIdle(const int idle);
 
-    int getUsage();
-    int getUser();
-    int getNice();
-    int getSystem();
-    int getIdle();
+    int getUsage() const;
+    int getUser() const;
+    int getNice() const;
+    int getSystem() const;
+    int getIdle() const;
 
 private:
     int cpuUsage;

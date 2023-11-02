@@ -19,6 +19,9 @@ public:
     const CPUUsageInfo&     getCPUInfo();
     const MemoryUsageInfo&  getMemoryInfo();
     const NetworkUsageInfo& getNetworkInfo();
+    
+private:
+    void calcNetworkUsageMaximum(const NetworkUsageInfo& usageInfo);
 
 private:
     CPUUsageInfo cpuUsageInfo;

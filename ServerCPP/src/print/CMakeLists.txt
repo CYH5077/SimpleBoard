@@ -4,11 +4,10 @@ project(resource_print_library)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCES Print.cpp
-            ProgressBar.cpp
+set(SOURCES ProgressBar.cpp
             FontColor.cpp
             TitleBar.cpp
-            PrintSystemResource.cpp
+            PrintInterface.cpp
             PrintCPUInterfaceInfo.cpp
             PrintMemoryUsageInfo.cpp
             PrintNetworkUsageInfo.cpp)

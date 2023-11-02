@@ -1,17 +1,11 @@
 #include "util/ArgvUtil.hpp"
 
-ArgvUtil ArgvUtil::instance;
-
 ArgvUtil::ArgvUtil() {
 
 }
 
 ArgvUtil::~ArgvUtil() {
 
-}
-
-ArgvUtil* ArgvUtil::getInstance() {
-    return &ArgvUtil::instance;
 }
 
 void ArgvUtil::setArgument(int argc, const char* argv[]) {
@@ -29,12 +23,12 @@ void ArgvUtil::setArgument(int argc, const char* argv[]) {
     }
 }
 
-bool ArgvUtil::isValidOption(std::string& option) {
+bool ArgvUtil::isValidOption(const std::string& option) {
     ArgvItem item;
     return this->getValue(option, &item);
 }
 
-bool ArgvUtil::getValue(std::string& option, ArgvItem* argvItem) {
+bool ArgvUtil::getValue(const std::string& option, ArgvItem* argvItem) {
     if (argvItem == nullptr) {
         return false;
     }
@@ -46,6 +40,20 @@ bool ArgvUtil::getValue(std::string& option, ArgvItem* argvItem) {
         }
     }
     return false;
+}
+
+bool ArgvUtil::getValue(const std::string& option, std::string* value) {
+    if (value == nullptr) {
+        return false;
+    }
+
+    ArgvItem item;
+    if (!this->getValue(option, &item)) {
+        return false;
+    }
+    
+    *value = item.getValue();
+    return true;
 }
 
 bool ArgvUtil::isOption(const char* option) {

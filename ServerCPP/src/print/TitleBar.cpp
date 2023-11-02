@@ -3,7 +3,7 @@
 #include <sstream>
 
 TitleBar::TitleBar(std::string&& title, TITLEBAR_TYPE type)
-: Print(FONT_COLOR::DEFAULT_FONT_COLOR) {
+: PrintInterface(FONT_COLOR::DEFAULT_FONT_COLOR) {
     this->title = title;
     this->setType(type);
 }   

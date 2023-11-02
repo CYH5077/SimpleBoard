@@ -10,7 +10,14 @@ ProgressBar::ProgressBar(std::string&& label, double value, double maxValue) {
 
 
 ProgressBar::ProgressBar(std::string&& label, double value, double maxValue, FontColor&& fontColor)
-: Print(fontColor) {
+: PrintInterface(fontColor) {
+    this->label = label;
+    this->value = value;
+    this->maxValue = maxValue;
+}
+
+ProgressBar::ProgressBar(std::string&& label, double value, double maxValue, FONT_COLOR fontColor)
+: PrintInterface(fontColor) {
     this->label = label;
     this->value = value;
     this->maxValue = maxValue;

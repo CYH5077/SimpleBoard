@@ -2,9 +2,9 @@
 
 #include <sstream>
 
-PrintMemoryUsageInfo::PrintMemoryUsageInfo(MemoryUsageInfo& usageInfo) 
+PrintMemoryUsageInfo::PrintMemoryUsageInfo(const MemoryUsageInfo& usageInfo) 
 : usageInfo(usageInfo) 
-, Print(FONT_COLOR::MEMORY_FONT_COLOR) {
+, PrintInterface(FONT_COLOR::MEMORY_FONT_COLOR) {
 
 }
 

@@ -15,4 +15,5 @@ public:
 public: 
     // getter
     bool isSuccess();
+    void getFailedList(ResultList* resultList);
 };

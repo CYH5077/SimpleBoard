@@ -8,26 +8,26 @@ CPUInterfaceInfo::~CPUInterfaceInfo() {
 
 }
 
-void CPUInterfaceInfo::setModel(std::string& model) {
+void CPUInterfaceInfo::setModel(const std::string& model) {
     this->model = model;
 }
 
-void CPUInterfaceInfo::setVendor(std::string& vendor) {
+void CPUInterfaceInfo::setVendor(const std::string& vendor) {
     this->vendor = vendor;
 }
 
-void CPUInterfaceInfo::setCoreCount(int coreCount) {
+void CPUInterfaceInfo::setCoreCount(const int coreCount) {
     this->coreCount = coreCount;
 }
 
-std::string CPUInterfaceInfo::getModel() {
+std::string CPUInterfaceInfo::getModel() const {
     return this->model;
 }
 
-std::string CPUInterfaceInfo::getVendor() {
+std::string CPUInterfaceInfo::getVendor() const {
     return this->vendor;
 }
 
-int CPUInterfaceInfo::getCoreCount() {
+int CPUInterfaceInfo::getCoreCount() const {
     return this->coreCount;
 }

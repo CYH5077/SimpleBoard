@@ -3,28 +3,24 @@
 #include <iostream>
 #include <vector>
 
+#include "util/ArgvItemList.hpp"
 #include "util/ArgvItem.hpp"
 
 class ArgvUtil {
 public:
-    static ArgvUtil* getInstance();
+    explicit ArgvUtil();
+    virtual ~ArgvUtil();
 
 public:
     void setArgument(int argc, const char* argv[]);
 
-    bool isValidOption(std::string& option);
-    bool getValue(std::string& option, ArgvItem* argvItem);
-
+    bool isValidOption(const std::string& option);
+    bool getValue(const std::string& option, ArgvItem* argvItem);
+    bool getValue(const std::string& option, std::string* value);
+    
 private:
     bool isOption(const char* option);
 
-
 private:
-    explicit ArgvUtil();
-    virtual ~ArgvUtil();
-
-private:
-    static ArgvUtil instance;
-
-    std::vector<ArgvItem> argvList;
+    ArgvItemList argvList;
 };

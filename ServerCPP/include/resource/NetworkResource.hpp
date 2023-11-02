@@ -38,5 +38,4 @@ private:
     bool getNetworkInterfaceList(NetworkInterfaceList* interfaceList, Result* result);
 
     void calcNetworkUsagePerSecond(NetworkUsageInfo& beforeUsageInfo, NetworkUsageInfo& afterUsageInfo, NetworkUsageInfo* networkUsageInfo);
-    void calcNetworkUsageMaximum(NetworkUsageInfo* usageInfo);
 };

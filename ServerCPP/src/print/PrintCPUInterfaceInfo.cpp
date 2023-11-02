@@ -2,9 +2,9 @@
 
 #include <sstream>
 
-PrintCPUInterfaceInfo::PrintCPUInterfaceInfo(CPUInterfaceInfo& interfaceInfo)
+PrintCPUInterfaceInfo::PrintCPUInterfaceInfo(const CPUInterfaceInfo& interfaceInfo)
 : interfaceInfo(interfaceInfo)
-, Print(FONT_COLOR::CPU_FONT_COLOR) {
+, PrintInterface(FONT_COLOR::CPU_FONT_COLOR) {
 
 }
 

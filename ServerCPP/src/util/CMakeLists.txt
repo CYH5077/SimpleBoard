@@ -4,7 +4,6 @@ project(util)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
 
 set(SOURCES Result.cpp
             ResultList.cpp
@@ -13,3 +12,6 @@ set(SOURCES Result.cpp
             ArgvUtil.cpp
             ArgvItem.cpp)
 add_library(${PROJECT_NAME} ${SOURCES})
+
+
+include_directories(${CMAKE_SOURCE_DIR}/include)

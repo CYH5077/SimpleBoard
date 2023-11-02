@@ -1,17 +1,17 @@
 #pragma once
 
-#include "print/Print.hpp"
+#include "print/PrintInterface.hpp"
 
 #include "resource/NetworkUsageInfo.hpp"
 
-class PrintNetworkUsageInfo : public Print {
+class PrintNetworkUsageInfo : public PrintInterface {
 public:
-    explicit PrintNetworkUsageInfo(NetworkUsageInfo& usageInfo);
+    explicit PrintNetworkUsageInfo(const NetworkUsageInfo& usageInfo);
     virtual ~PrintNetworkUsageInfo();
 
 public:
     virtual std::string text() const override;
     
 private:
-    NetworkUsageInfo& usageInfo;
+    const NetworkUsageInfo& usageInfo;
 };

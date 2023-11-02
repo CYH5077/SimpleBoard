@@ -11,34 +11,34 @@ MemoryUsageInfo::~MemoryUsageInfo() {
 
 }
 
-void MemoryUsageInfo::setTotalMemory(double totalMemory) {
+void MemoryUsageInfo::setTotalMemory(const double totalMemory) {
     this->totalMemory = totalMemory;
 }
 
-void MemoryUsageInfo::setUsageMemory(double usageMemory) {
+void MemoryUsageInfo::setUsageMemory(const double usageMemory) {
     this->usageMemory = usageMemory;
 }
 
-void MemoryUsageInfo::setTotalVirtualMemory(double totalVirtualMemory) {
+void MemoryUsageInfo::setTotalVirtualMemory(const double totalVirtualMemory) {
     this->totalVirtualMemory = totalVirtualMemory;
 }
 
-void MemoryUsageInfo::setUsageVirtualMemory(double usageVirtualMemory) {
+void MemoryUsageInfo::setUsageVirtualMemory(const double usageVirtualMemory) {
     this->usageVirtualMemory = usageVirtualMemory;
 }
 
-double MemoryUsageInfo::getTotalMemoryToKbytes() {
+double MemoryUsageInfo::getTotalMemoryToKbytes() const {
     return this->totalMemory / 1024;
 }
 
-double MemoryUsageInfo::getUsageMemoryToKbytes() {
+double MemoryUsageInfo::getUsageMemoryToKbytes() const {
     return this->usageMemory / 1024;
 }
 
-double MemoryUsageInfo::getTotalVirtualMemoryToKbytes() {
+double MemoryUsageInfo::getTotalVirtualMemoryToKbytes() const {
     return this->totalVirtualMemory / 1024;
 }
 
-double MemoryUsageInfo::getUsageVirtualMemoryToKbytes() {
+double MemoryUsageInfo::getUsageVirtualMemoryToKbytes() const {
     return this->usageVirtualMemory / 1024;
 }

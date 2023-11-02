@@ -11,16 +11,17 @@ void testArgvUtil() {
         "-d", "d-value",
         "-e"
     };
-    ArgvUtil::getInstance()->setArgument(argc, argv);
+    ArgvUtil argvUtil;
+    argvUtil.setArgument(argc, argv);
 
     std::string a = "-a";
-    if (!ArgvUtil::getInstance()->isValidOption(a)) {
+    if (!argvUtil.isValidOption(a)) {
         std::cout << "-a 옵션 못찾음 - 1" << std::endl;
         return;
     }
 
     ArgvItem item;
-    if (!ArgvUtil::getInstance()->getValue(a, &item)) {
+    if (!argvUtil.getValue(a, &item)) {
         std::cout << "-a 옵션 못찾음 - 2" << std::endl;
         return;
     }
@@ -29,7 +30,7 @@ void testArgvUtil() {
               << "value: "  << item.getValue()  << std::endl;;
 
     std::string f = "-f";
-    if (ArgvUtil::getInstance()->isValidOption(f)) {
+    if (argvUtil.isValidOption(f)) {
         std::cout << "-f 없어야되는데 있음" << std::endl;
         return;
     }

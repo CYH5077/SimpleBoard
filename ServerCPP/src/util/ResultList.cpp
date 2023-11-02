@@ -24,3 +24,15 @@ bool ResultList::isSuccess() {
 
     return true;
 }
+
+void ResultList::getFailedList(ResultList* resultList) {
+    if (resultList == nullptr) {
+        return;
+    }
+    
+    for (auto& iter : *this) {
+        if (!iter.isSuccess()) {
+            resultList->push_back(iter);
+        }
+    }
+}

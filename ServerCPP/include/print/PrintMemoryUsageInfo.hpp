@@ -1,17 +1,17 @@
 #pragma once
 
-#include "print/Print.hpp"
+#include "print/PrintInterface.hpp"
 
 #include "resource/MemoryUsageInfo.hpp"
 
-class PrintMemoryUsageInfo : public Print {
+class PrintMemoryUsageInfo : public PrintInterface {
 public:
-    explicit PrintMemoryUsageInfo(MemoryUsageInfo& usageInfo);
+    explicit PrintMemoryUsageInfo(const MemoryUsageInfo& usageInfo);
     virtual ~PrintMemoryUsageInfo();
 
 public:
     virtual std::string text() const override;
 
 private:
-    MemoryUsageInfo& usageInfo;
+    const MemoryUsageInfo& usageInfo;
 };

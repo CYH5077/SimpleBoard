@@ -1,13 +1,14 @@
 #pragma once
 
-#include "print/Print.hpp"
+#include "print/PrintInterface.hpp"
 
 #include <string>
 
-class ProgressBar : public Print {
+class ProgressBar : public PrintInterface {
 public:
     explicit ProgressBar(std::string&& label, double value, double maxValue);
     explicit ProgressBar(std::string&& label, double value, double maxValue, FontColor&& fontColor);
+    explicit ProgressBar(std::string&& label, double value, double maxValue, FONT_COLOR fontColor);
     virtual ~ProgressBar();
 
 public:

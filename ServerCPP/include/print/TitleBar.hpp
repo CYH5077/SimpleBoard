@@ -1,13 +1,13 @@
 #pragma once
 
-#include "print/Print.hpp"
+#include "print/PrintInterface.hpp"
 
 enum class TITLEBAR_TYPE {
     MAIN,
     SUB
 };
 
-class TitleBar : public Print {
+class TitleBar : public PrintInterface {
 public:
     explicit TitleBar(std::string&& title, TITLEBAR_TYPE type);
     virtual ~TitleBar();

@@ -12,13 +12,13 @@ public:
     virtual ~CPUInterfaceInfo();
 
 public:
-    void setModel(std::string& model);
-    void setVendor(std::string& vendor);
-    void setCoreCount(int coreCount);
+    void setModel(const std::string& model);
+    void setVendor(const std::string& vendor);
+    void setCoreCount(const int coreCount);
 
-    std::string getModel();
-    std::string getVendor();
-    int         getCoreCount();
+    std::string getModel() const;
+    std::string getVendor() const;
+    int         getCoreCount() const;
 
 private:
     std::string model;

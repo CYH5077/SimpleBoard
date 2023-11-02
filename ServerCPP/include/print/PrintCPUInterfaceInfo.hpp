@@ -1,13 +1,13 @@
 #pragma once
 
-#include "print/Print.hpp"
+#include "print/PrintInterface.hpp"
 
 #include "resource/CPUInterfaceInfo.hpp"
 #include "resource/CPUUsageInfo.hpp"
 
-class PrintCPUInterfaceInfo : public Print {
+class PrintCPUInterfaceInfo : public PrintInterface {
 public:
-    explicit PrintCPUInterfaceInfo(CPUInterfaceInfo& interfaceInfo);
+    explicit PrintCPUInterfaceInfo(const CPUInterfaceInfo& interfaceInfo);
     virtual ~PrintCPUInterfaceInfo();
 
 public:
@@ -15,5 +15,5 @@ public:
 
 
 private:
-    CPUInterfaceInfo& interfaceInfo;
+    const CPUInterfaceInfo& interfaceInfo;
 };
