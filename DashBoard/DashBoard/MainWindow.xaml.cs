@@ -44,15 +44,15 @@ namespace DashBoard
             InitializeComponent();
 
             //connection_motion 동작 함수 초기화
-            motionThread.DoWork += UI_change_worker;
+            motionThread.DoWork += UIChangeWorker;
             //update 워커 초기화
-            updateThread.DoWork += Update_Worker;
+            updateThread.DoWork += UpdateWorker;
 			updateThread.WorkerSupportsCancellation = true; //취소 가능 여부
         }
 
 		
         //Connect 연결시 UI 모션
-        private void UI_change_worker(object sender, DoWorkEventArgs e)
+        private void UIChangeWorker(object sender, DoWorkEventArgs e)
         {
             //Main UI에 접근하기위해
             Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
@@ -73,9 +73,9 @@ namespace DashBoard
         }
 
         //서버 리소스 정보를 받아온다.
-        private void Update_Worker(object sender, DoWorkEventArgs e)
+        private void UpdateWorker(object sender, DoWorkEventArgs e)
         {
-            resource_info res = null;
+            ResourceInfo res = null;
 			
 			const double MB = 1024*1024.0;
 			const double kBytes = 1024.0;
@@ -96,48 +96,48 @@ namespace DashBoard
 				Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
                 {
 					//CPU 정보
-					Cpu_model_label.Content = Encoding.ASCII.GetString(res.cpu_model, 0, 50);
-					Cpu_core_label.Content = Encoding.ASCII.GetString(res.cpu_core_count, 0, 3);
+					Cpu_model_label.Content = Encoding.ASCII.GetString(res.cpuModel, 0, 50);
+					Cpu_core_label.Content = Encoding.ASCII.GetString(res.cpuCoreCount, 0, 3);
 					
 					//Memory 정보
 					//	물리메모리
-					total_phy_mem_label.Content = (res.total_mem / MB).ToString("N0") + " MB";
-					use_phy_mem_label.Content = (res.using_mem / MB).ToString("N4") + " MB";
+					total_phy_mem_label.Content = (res.memoryTotalSize / MB).ToString("N0") + " MB";
+					use_phy_mem_label.Content   = (res.memoryUsageSize / MB).ToString("N4") + " MB";
 					//	가상메모리
-					total_vir_mem_label.Content = (res.total_vir_mem / MB).ToString("N0") + " MB";
-					use_vir_mem_label.Content = (res.using_vir_mem / MB).ToString("N4") + " MB";
+					total_vir_mem_label.Content = (res.virtualMemoryTotalSize / MB).ToString("N0") + " MB";
+					use_vir_mem_label.Content   = (res.virtualMemoryUsageSize / MB).ToString("N4") + " MB";
 					
 					//Network 정보
 					// 바이트
-					Input_bytes_label.Content = (res.netSec_recv).ToString() + " Bytes/s";
-					Output_bytes_label.Content = (res.netSec_send).ToString() + " Bytes/s";
-					Total_bytes_label.Content = (res.netSec_total).ToString() + " Bytes/s";
+					Input_bytes_label.Content  = (res.networkRecvSizePerSecond).ToString() + " Bytes/s";
+					Output_bytes_label.Content = (res.networkSendSizePerSecond).ToString() + " Bytes/s";
+					Total_bytes_label.Content  = (res.networkTotalSizePerSecond).ToString() + " Bytes/s";
 					// 소켓
-					Input_sock_label.Content = (res.netSock_recv).ToString() + " (1/s)";
-					Output_sock_label.Content = (res.netSock_send).ToString() + " (1/s)";
-					Total_sock_label.Content = (res.netSock_total).ToString() + " (1/s)";
+					Input_sock_label.Content  = (res.networkRecvPacketPerSecond).ToString() + " (1/s)";
+					Output_sock_label.Content = (res.networkSendPacketPerSecond).ToString() + " (1/s)";
+					Total_sock_label.Content  = (res.networkTotalPacketPerSecond).ToString() + " (1/s)";
 					
 					//송수신 최고 기록.
 					// 바이트
-					Input_Maxbyte_label.Content = (res.netSec_max_recv / kBytes).ToString("N0") + " KBytes/s";
-					Output_Maxbyte_label.Content = (res.netSec_max_send / kBytes).ToString("N0") + " KBytes/s";
+					Input_Maxbyte_label.Content  = (res.networkMaximumRecvSize / kBytes).ToString("N0") + " KBytes/s";
+					Output_Maxbyte_label.Content = (res.networkMaximumSendSize / kBytes).ToString("N0") + " KBytes/s";
 					// 소켓
-					Input_Maxsock_label.Content = (res.netSock_max_recv).ToString() + " (1/s)";
-					Output_Maxsock_label.Content =(res.netSock_max_send).ToString() + " (1/s)";
+					Input_Maxsock_label.Content  = (res.networkMaximumRecvPacket).ToString() + " (1/s)";
+					Output_Maxsock_label.Content = (res.networkMaximumSendPacket).ToString() + " (1/s)";
 					
 
                     //CPU Chart
-					cpu_usage_label.Content = (res.cpu).ToString() + "%";
-					cpu_Chart_val  = res.cpu * -3.6;
+					cpu_usage_label.Content = (res.cpuUsage).ToString() + "%";
+					cpu_Chart_val  = res.cpuUsage * -3.6;
 					cpu_usage_bar.StartAngle = (cpu_Chart_val == 0) ? -1 : cpu_Chart_val;
 
                     //Memory Chart
-					mem_Chart_val = (res.using_mem * 100) / res.total_mem;
+					mem_Chart_val = (res.memoryUsageSize * 100) / res.memoryTotalSize;
 					mem_usage_label.Content = ((int)mem_Chart_val).ToString() + "%";
 					mem_usage_bar.StartAngle = (mem_Chart_val == 0) ? -1 : mem_Chart_val * -3.6;
  
 					//Virtual Memory Chart
-					vir_Chart_val = (res.using_vir_mem * 100) / res.total_vir_mem;
+					vir_Chart_val = (res.virtualMemoryUsageSize* 100) / res.virtualMemoryTotalSize;
 					virtualMem_usage_label.Content = ((int)vir_Chart_val).ToString() + "%";
 					virtualMem_usage_bar.StartAngle = (vir_Chart_val == 0) ? -1 : vir_Chart_val * -3.6;
                 }));
