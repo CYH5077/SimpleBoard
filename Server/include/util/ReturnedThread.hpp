@@ -28,6 +28,9 @@ public:
     }
 
     virtual void join() {
+        if (!this->thread->joinable()) {
+            return;
+        }
         this->thread->join();
     }
 

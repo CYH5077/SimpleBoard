@@ -65,6 +65,8 @@ bool AsioBroadcastServerThread::createAcceptor(Result* result) {
         this->acceptor = std::make_shared<tcp::acceptor>(this->ioContext, tcp::endpoint(tcp::v4(), this->servicePort));
     } catch (std::bad_alloc& e) {
         return result->failed(-1, e.what());
+    } catch (boost::system::system_error& e) {
+        return result->failed(-1, e.what());
     }
 
     this->asyncAcceptStart();

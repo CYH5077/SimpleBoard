@@ -8,7 +8,6 @@ Resource::Resource() {
 
 Resource::~Resource() {
     this->stop();
-    std::cout << "Hello World" << std::endl;
 }
 
 Resource& Resource::getInstance() {
