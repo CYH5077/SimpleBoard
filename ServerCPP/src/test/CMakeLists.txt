@@ -9,7 +9,9 @@ set(PRINT_TEST print_test)
 set(UTIL_TEST util_test)
 set(SERVICE_TEST service_test)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
+find_package(Boost REQUIRED COMPONENTS system)
+
+include_directories(${CMAKE_SOURCE_DIR}/include ${Boost_INCLUDE_DIRS})
 link_libraries(service_library
                resource_print_library
                resource_library 

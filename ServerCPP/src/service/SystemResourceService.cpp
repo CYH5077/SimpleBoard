@@ -35,6 +35,9 @@ bool SystemResourceService::run(SERVICE_TYPE serviceType, ArgvUtil& argvUtil, Re
 
 void SystemResourceService::stop() {
     this->isRunning = false;
+    for (auto& iter : this->serviceList) {
+        iter->stop();
+    }
 }
 
 bool SystemResourceService::isValidArgv(SERVICE_TYPE serviceType, ArgvUtil& argvUtil, Result* result) {
@@ -44,7 +47,9 @@ bool SystemResourceService::isValidArgv(SERVICE_TYPE serviceType, ArgvUtil& argv
 
     switch (serviceType) {
     case SERVICE_TYPE::LOCAL_PRINT:
-        return this->isValidLocalValid(argvUtil, result);
+        return this->isValidLocalArgv(argvUtil, result);
+    case SERVICE_TYPE::SERVER:
+        return this->isValidServerArgv(argvUtil, result);
     }
 
     return result->failed(-1, "알 수 없는 SERVICE_TYPE");
@@ -55,6 +60,10 @@ bool SystemResourceService::initService(SERVICE_TYPE serviceType, Result* result
         switch (serviceType) {
         case SERVICE_TYPE::LOCAL_PRINT:
             this->serviceList.push_back(ServiceFactory::createService(SERVICE_TYPE::LOCAL_PRINT));
+            break;
+        case SERVICE_TYPE::SERVER:
+            this->serviceList.push_back(ServiceFactory::createService(SERVICE_TYPE::LOCAL_PRINT));
+            this->serviceList.push_back(ServiceFactory::createService(SERVICE_TYPE::SERVER));
             break;
         }
     } catch (std::bad_alloc& e) {
@@ -121,11 +130,25 @@ bool SystemResourceService::getNetworkInterfaceName(ArgvUtil& argvUtil, std::str
     return result->success();
 }
 
-bool SystemResourceService::isValidLocalValid(ArgvUtil& argvUtil, Result* result) {
+bool SystemResourceService::isValidLocalArgv(ArgvUtil& argvUtil, Result* result) {
     if (!argvUtil.isValidOption(this->OPTION_RUN_LOCAL)) {
-        return result->failed(-1, this->OPTION_RUN_LOCAL + " 이 설정되지 않았습니다.");
-    } else if (!argvUtil.isValidOption(this->OPTION_NETWORK_INTERFACE_NAME)) {
-        return result->failed(-1, this->OPTION_NETWORK_INTERFACE_NAME + " 이 설정되지 않았습니다. ex) -n enp2s0");
+        return result->failed(-1, this->OPTION_RUN_LOCAL + " 가 설정되지 않았습니다.");
+    } 
+    
+    if (!argvUtil.isValidOption(this->OPTION_NETWORK_INTERFACE_NAME)) {
+        return result->failed(-1, this->OPTION_NETWORK_INTERFACE_NAME + "네트워크 인터페이스 정보를 찾을 수 없습니다. 다음과 같은 옵션을 사용하세요 ex:) -n enp2s0");
+    }
+
+    return result->success();
+}
+
+bool SystemResourceService::isValidServerArgv(ArgvUtil& argvUtil, Result* result) {
+    if (!argvUtil.isValidOption(this->OPTION_RUN_SERVER)) {
+        return result->failed(-1, this->OPTION_RUN_SERVER +  " 가 설정되지 않았습니다.");
+    }
+
+    if (!argvUtil.isValidOption(this->OPTION_NETWORK_INTERFACE_NAME)) {
+        return result->failed(-1, this->OPTION_NETWORK_INTERFACE_NAME + "네트워크 인터페이스 정보를 찾을 수 없습니다. 다음과 같은 옵션을 사용하세요 ex:) -n enp2s0");
     }
 
     return result->success();

@@ -6,6 +6,7 @@
 
 enum class SERVICE_TYPE {
     LOCAL_PRINT,
+    SERVER,
 };
 
 class ServiceFactory {

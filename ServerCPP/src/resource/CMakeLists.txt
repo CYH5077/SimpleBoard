@@ -15,6 +15,7 @@ set(SOURCES CPUResource.cpp
             SystemInterfaceInfo.cpp
             SystemResource.cpp
             SystemUsageInfo.cpp
+            SystemResourceSerializer.cpp
             ThreadCPUUsage.cpp
             ThreadMemoryUsage.cpp
             ThreadNetworkUsage.cpp)

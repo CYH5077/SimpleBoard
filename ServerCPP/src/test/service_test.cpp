@@ -4,16 +4,16 @@
 
 #include "service/SystemResourceService.hpp"
 
-void testSystemResourceService(ArgvUtil& argvUtil) {
+void testService(ArgvUtil& argvUtil, SERVICE_TYPE serviceType) {
     SystemResourceService service;
 
     Result result;
-    if (service.isValidArgv(SERVICE_TYPE::LOCAL_PRINT, argvUtil, &result)) {
+    if (service.isValidArgv(serviceType, argvUtil, &result)) {
         std::cout << result.getErrorMessage() << std::endl;
     }
 
     ResultList resultList;
-    if (!service.run(SERVICE_TYPE::LOCAL_PRINT, argvUtil, &resultList)) {
+    if (!service.run(serviceType, argvUtil, &resultList)) {
         ResultList errorResultList;
         resultList.getFailedList(&errorResultList);
         for (auto& iter : errorResultList) {
@@ -22,11 +22,15 @@ void testSystemResourceService(ArgvUtil& argvUtil) {
     }
 }
 
+void testServerService(ArgvUtil& argvUtil) {
+    SystemResourceService service;
+}
+
 int main(int argc, const char* argv[]) {
     ArgvUtil argvUtil;
     argvUtil.setArgument(argc, argv);
 
-    testSystemResourceService(argvUtil);
+    testService(argvUtil, SERVICE_TYPE::SERVER);
 
     return 0;
 }

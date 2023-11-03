@@ -9,4 +9,5 @@ public:
 
 public:
     virtual bool run(ArgvUtil& argvUtil, SystemInterfaceInfo& interfaceInfo, SystemUsageInfo& usageInfo, ResultList* resultList) override;
+    virtual void stop() override;
 };

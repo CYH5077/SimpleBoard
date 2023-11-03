@@ -11,6 +11,11 @@ public:
     void setTotalVirtualMemory(const double totalVirtualMemory);
     void setUsageVirtualMemory(const double UsageVirtualMemory);
 
+    double getTotalMemory() const;
+    double getUsageMemory() const;
+    double getTotalVirtualMemory() const;
+    double getUsageVirtualMemory() const;
+    
     double getTotalMemoryToKbytes() const;
     double getUsageMemoryToKbytes() const;
     double getTotalVirtualMemoryToKbytes() const;

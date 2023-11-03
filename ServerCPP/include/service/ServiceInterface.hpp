@@ -13,7 +13,8 @@ public:
 
 public:
     virtual bool run(ArgvUtil& argvUtil, SystemInterfaceInfo& interfaceInfo, SystemUsageInfo& usageInfo, ResultList* resultList) = 0;
-    
+    virtual void stop() = 0;
+
 private:
 
 };

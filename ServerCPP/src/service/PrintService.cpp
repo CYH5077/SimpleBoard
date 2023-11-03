@@ -45,3 +45,7 @@ bool PrintService::run(ArgvUtil& argvUtil, SystemInterfaceInfo& interfaceInfo, S
 
     return resultList->success();
 }
+
+void PrintService::stop() {
+    
+}

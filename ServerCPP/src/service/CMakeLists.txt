@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCES ServiceInterface.cpp
             PrintService.cpp
+            ServerService.cpp
             ServiceFactory.cpp
             SystemResourceService.cpp)
 add_library(${PROJECT_NAME} ${SOURCES})

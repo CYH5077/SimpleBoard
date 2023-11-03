@@ -55,7 +55,7 @@ private:
     int recvPacket;
 
     // 아래 값들은 객체 대입 연산자 사용시 복사가 되지 않음.
-    // 최대 최소값 NetworkResource::readNetworkUsageInfoPerSecond() 함수 에서 
+    // 최대 최소값 SystemUsageInfo::calcNetworkUsageMaximum() 함수 에서 
     // 계속해서 같은 NetworkUsageInfo 인스턴스를 사용해여 위의 함수를 호출하면 해당 값이 초기화됨
     int maximumSendSize; // 수신 최고기록
     int maximumRecvSize; // 송신 최고기록

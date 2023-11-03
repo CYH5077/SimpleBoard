@@ -40,7 +40,8 @@ private:
     
     bool getNetworkInterfaceName(ArgvUtil& argvUtil, std::string* networkInterfaceName, Result* result);
 
-    bool isValidLocalValid(ArgvUtil& argvUtil, Result* result);
+    bool isValidLocalArgv(ArgvUtil& argvUtil, Result* result);
+    bool isValidServerArgv(ArgvUtil& argvUtil, Result* result);
 
 private:
     ServiceList serviceList;

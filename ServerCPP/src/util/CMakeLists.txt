@@ -9,6 +9,9 @@ set(SOURCES Result.cpp
             ResultList.cpp
             StringUtil.cpp
             ThreadManager.cpp
+            AsioSession.cpp
+            AsioSessionList.cpp
+            AsioBroadcastServerThread.cpp
             ArgvUtil.cpp
             ArgvItem.cpp)
 add_library(${PROJECT_NAME} ${SOURCES})

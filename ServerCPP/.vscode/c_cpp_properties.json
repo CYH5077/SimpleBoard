@@ -4,6 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/include",
+                "/usr/include",
                 "${vcpkgRoot}/x64-linux/include"
             ],
             "defines": [],
