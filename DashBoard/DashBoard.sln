@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashBoard", "DashBoard\DashBoard.csproj", "{e7a13079-af9a-40e0-9264-bca482a8ec30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7A13079-AF9A-40E0-9264-BCA482A8EC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A13079-AF9A-40E0-9264-BCA482A8EC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A13079-AF9A-40E0-9264-BCA482A8EC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A13079-AF9A-40E0-9264-BCA482A8EC30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
