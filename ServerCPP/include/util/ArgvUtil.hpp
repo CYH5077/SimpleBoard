@@ -14,6 +14,7 @@ public:
 public:
     void setArgument(int argc, const char* argv[]);
 
+    bool isEmpty();
     bool isValidOption(const std::string& option);
     bool getValue(const std::string& option, ArgvItem* argvItem);
     bool getValue(const std::string& option, std::string* value);

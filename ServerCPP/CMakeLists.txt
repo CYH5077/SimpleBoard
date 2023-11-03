@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_BUILD_TYPE Debug)
 set(DEBUG_COMPILE_OPTIONS -g -ggdb)
+#set(DEBUG_COMPILE_OPTIONS -O3 -Wall)
 
 add_subdirectory(src)
 

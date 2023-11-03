@@ -23,6 +23,14 @@ void ArgvUtil::setArgument(int argc, const char* argv[]) {
     }
 }
 
+bool ArgvUtil::isEmpty() {
+    if (this->argvList.size() > 0) {
+        return false;
+    }
+
+    return true;
+}
+
 bool ArgvUtil::isValidOption(const std::string& option) {
     ArgvItem item;
     return this->getValue(option, &item);
