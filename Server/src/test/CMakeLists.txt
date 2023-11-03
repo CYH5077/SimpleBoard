@@ -16,7 +16,7 @@ link_libraries(service_library
                resource_print_library
                resource_library 
                util)
-add_compile_options(${DEBUG_COMPILE_OPTIONS})
+add_compile_options(${COMPILE_OPTIONS})
 
 
 add_executable(${RESOURCE_TEST} resource_test.cpp)

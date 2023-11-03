@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.6)
 
-project(resource)
+project(resource_tool)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -12,7 +12,7 @@ link_libraries(service_library
                resource_print_library
                resource_library 
                util)
-add_compile_options(${DEBUG_COMPILE_OPTIONS})
+add_compile_options(${COMPILE_OPTIONS})
 
 add_executable(${PROJECT_NAME} main.cpp
                                Resource.cpp)

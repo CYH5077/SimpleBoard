@@ -22,8 +22,8 @@ bool ServerService::run(ArgvUtil& argvUtil, SystemInterfaceInfo& interfaceInfo, 
     SystemResourceSerializer::serialize(interfaceInfo, usageInfo, &data);
     this->broadcastServerThread.broadcast(data, resultList);
 
-    // return resultList->success();
-    return true;
+    return resultList->success();
+    //return true;
 }
 
 void ServerService::stop() {

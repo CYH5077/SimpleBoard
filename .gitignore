@@ -6,7 +6,7 @@ resource_test
 print_test
 util_test
 service_test
-resource
+resource_tool
 build
 
 ### C++ ###
