@@ -1,20 +1,22 @@
-<h2>It's a tool for monitoring system resources of Linux.</h2>
+<h1>System resource monitoring tool</h1>
 
-<b>Quick Start Command (Server - only linux)</b>
-1. make //Build first
+#<h2>Build</h2>
+1. sudo apt-get install -y libboost-all-dev
+2. cd Server
+3. ./build.sh
 
-At the end of the build, a file called test will be created.<br>
+#<h2>Help</h2>
+: ./resource_tool -h
 
-2-1. To view the current system resource status on the console, use<br>
-: <b><font color="red">./test</font><br></b>
-2-2. To run it as a server, run it with the -s option <br>
-: <b><font color="red">./test -s</font><br></b>
-2-3. To connect to a remote server, use the -c option <br>
-: <b><font color="red">./test -c [target ip]</font><br></b>
+#<h2>Tool Usage Guide</h2>
+1. show only local
+: <b><font color="red">./resource_tool -l -n {network interface}</font></b><br>
+2. run server
+: <b><font color="red">./resource_tool -s -n {network interface}</font></b><br>
 
 
 
-If it does not work, restart the server and client.
+
 <center><b><h1>GUI Mode (only Windows)</h1></b></center>
 <img src="https://github.com/Choi-Young-Hoon/SimpleBoard/blob/master/DashBoard.gif"/>
 <br><br>
